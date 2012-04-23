@@ -1,0 +1,35 @@
+Global setup:
+
+ Set up git
+  git config --global user.name "Joe Karas"
+  git config --global user.email rudi4@tampabay.rr.com
+      
+
+Next steps:
+
+  mkdir sample_app
+  cd sample_app
+  git init
+  touch README
+  git add README
+  git commit -m 'first commit'
+  git remote add origin git@github.com:Rudi666/sample_app.git
+  git push -u origin master
+      
+
+Existing Git Repo?
+
+  cd existing_git_repo
+  git remote add origin git@github.com:Rudi666/sample_app.git
+  git push -u origin master
+      
+
+Importing a Subversion Repo?
+
+  Check out the guide for step by step instructions.
+      
+
+When you're done:
+
+  Continue
+
