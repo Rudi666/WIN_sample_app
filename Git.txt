@@ -15,13 +15,15 @@ Next steps:
   git commit -m 'first commit'
   git remote add origin git@github.com:Rudi666/sample_app.git
   git push -u origin master
+  
+  git remote add sample_app git@github.com:your_github_username/your_github_app.git
       
 
 Existing Git Repo?
 
   cd existing_git_repo
   git remote add origin git@github.com:Rudi666/sample_app.git
-  git push -u origin master
+  git push -u sample_app master
       
 
 Importing a Subversion Repo?
