@@ -1,0 +1,4 @@
+User.create(name: "Brent Hart", email: "bhart@WWE.com", password: "foofoo", password_confirmation: "foofoo")
+User.create(name: "Brent Hart", email: "bhart@WWE.com")
+User.create(name: "Frank Zappa", email: "zappa@weasel.com", password: "dweezil", password_confirmation: "dweezil")
+User.create(name: "Michael Hartl", email: "mhartl@example.com", password: "foobar", password_confirmation: "foobar")
