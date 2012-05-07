@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
   # attr_accessor   :password
   attr_accessible :name, :email, :password, :password_confirmation
   has_secure_password
+  # WTF
+  # validates_presence_of :password_digest, :message => "Password can't be blank"
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
@@ -30,6 +32,9 @@ class User < ActiveRecord::Base
                        :length => { :within => 6..40 }
 
   # before_save :encrypt_password
+  before_save { |user| user.email = email.downcase }
+  before_save :create_remember_token
+  
   
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)
@@ -47,14 +52,20 @@ class User < ActiveRecord::Base
   def unfollow!(followed)
     relationships.find_by_followed_id(followed).destroy
   end
-
-  end
-  class << self
+  
+	 class << self
     def authenticate(email, submitted_password)
       user = find_by_email(email)
       (user && user.has_password?(submitted_password)) ? user : nil
     end
-    
+  end
+ 
+    private
+
+    def create_remember_token
+      self.remember_token = SecureRandom.urlsafe_base64
+    end 
+	
   end
   
 
