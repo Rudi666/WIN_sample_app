@@ -1,0 +1,2 @@
+bundle exec rspec spec/requests/authentication_pages_spec.rb -e "edit page"
+bundle exec rspec spec/requests/user_pages_spec.rb -e "edit page"
