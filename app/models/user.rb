@@ -14,7 +14,6 @@
 #
 
 class User < ActiveRecord::Base
-  # attr_accessor   :password
   attr_accessible :name, :email, :password, :password_confirmation
   has_secure_password
   has_many :microposts, dependent: :destroy
@@ -41,6 +40,10 @@ class User < ActiveRecord::Base
     encrypted_password == encrypt(submitted_password)
   end
   
+  def feed
+    # This is preliminary. See "Following users" for the full implementation.
+    Micropost.where("user_id = ?", id)
+  end  
   
   def following?(followed)
     relationships.find_by_followed_id(followed)
@@ -66,7 +69,6 @@ class User < ActiveRecord::Base
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
     end 
-	
   end
   
 
